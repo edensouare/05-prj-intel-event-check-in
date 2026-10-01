@@ -25,7 +25,8 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(
+  background:
+    linear-gradient(
       135deg,
       rgba(0, 153, 219, 0.9) 0%,
       rgba(0, 104, 181, 0.9) 50%,
@@ -258,6 +259,26 @@ button .fas {
   color: #003c71;
 }
 
+.duplicate-message {
+  background-color: #fff1f0;
+  color: #9f2d25;
+}
+
+.celebration-message {
+  display: none;
+  margin: 0 0 20px;
+  padding: 16px 20px;
+  border-left: 4px solid #16804a;
+  border-radius: 4px;
+  background-color: #e7f5ec;
+  color: #165b38;
+  font-size: 18px;
+}
+
+.celebration-message strong {
+  color: #0a4327;
+}
+
 /* Counter */
 #attendeeCount {
   color: #0071c5;
@@ -346,6 +367,63 @@ select {
   font-size: 15px;
   font-weight: 500;
   color: #475569;
+}
+
+.attendee-roster {
+  margin-top: 28px;
+  text-align: left;
+}
+
+.attendee-roster h3 {
+  margin-bottom: 12px;
+}
+
+.empty-roster {
+  padding: 14px 16px;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.attendee-list {
+  list-style: none;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.attendee-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.attendee-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #334155;
+  font-weight: 600;
+}
+
+.attendee-team {
+  flex-shrink: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.attendee-row.water .attendee-team {
+  color: #08799c;
+}
+
+.attendee-row.zero .attendee-team {
+  color: #25804b;
+}
+
+.attendee-row.power .attendee-team {
+  color: #a65c17;
 }
 
 /* Mobile responsive */
