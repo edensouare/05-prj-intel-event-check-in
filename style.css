@@ -259,7 +259,8 @@ button .fas {
   color: #003c71;
 }
 
-.duplicate-message {
+.duplicate-message,
+.error-message {
   background-color: #fff1f0;
   color: #9f2d25;
 }

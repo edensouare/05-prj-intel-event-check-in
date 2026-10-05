@@ -20,6 +20,12 @@ if (savedAttendance !== null) {
     checkedInNames = Array.isArray(attendanceData.checkedInNames)
       ? attendanceData.checkedInNames
       : [];
+    for (let index = 0; index < checkedInNames.length; index++) {
+      checkedInNames[index] = String(checkedInNames[index])
+        .trim()
+        .replace(/\s+/g, " ")
+        .toLowerCase();
+    }
     attendeeRecords = Array.isArray(attendanceData.attendeeRecords)
       ? attendanceData.attendeeRecords
       : [];
@@ -102,7 +108,7 @@ if (totalAttendees >= 50) {
 checkInForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const name = attendeeName.value.trim();
+  const name = attendeeName.value.trim().replace(/\s+/g, " ");
   const selectedTeam = teamSelect.value;
   let teamCount;
   let teamName;
@@ -122,10 +128,18 @@ checkInForm.addEventListener("submit", function (event) {
     return;
   }
 
+  if (name.split(" ").length < 2) {
+    greeting.textContent = "Please enter both your first and last name.";
+    greeting.classList.remove("success-message", "duplicate-message");
+    greeting.classList.add("error-message");
+    greeting.style.display = "block";
+    return;
+  }
+
   const normalizedName = name.toLowerCase();
   if (checkedInNames.indexOf(normalizedName) !== -1) {
     greeting.textContent = `You have already checked in, ${name}.`;
-    greeting.classList.remove("success-message");
+    greeting.classList.remove("success-message", "error-message");
     greeting.classList.add("duplicate-message");
     greeting.style.display = "block";
     return;
@@ -151,7 +165,7 @@ checkInForm.addEventListener("submit", function (event) {
   }
 
   greeting.textContent = `Welcome, ${name}! Thanks for joining ${teamName}.`;
-  greeting.classList.remove("duplicate-message");
+  greeting.classList.remove("duplicate-message", "error-message");
   greeting.classList.add("success-message");
   greeting.style.display = "block";
 
